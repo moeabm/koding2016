@@ -107,12 +107,12 @@ app.use(function(req, res, next) {
   }
   next();
 });
-app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
+app.use(express.static(path.join(__dirname, 'public') ) );
+app.get('/*', homeController.all);
 
 /**
  * Primary app routes.
  */
-app.get('/*', homeController.all);
 // app.get('/', homeController.index);
 // app.get('/login', userController.getLogin);
 // app.post('/login', userController.postLogin);
