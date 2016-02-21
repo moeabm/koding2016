@@ -12,7 +12,7 @@ $(document).ready(function() {
   // $("body").on("click", smash);
 
   var smash = function(e){
-    console.log($(this));
+    // console.log($(this));
     if(!smashing){
       smashing = true;
       e.preventDefault();
