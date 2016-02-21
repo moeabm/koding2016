@@ -229,7 +229,7 @@ function greenify(filepath, callback){
 	  .out("-fuzz")
 	  .out("35%")
 	  .out("-fill")
-	  .out("#FFFFFF")
+	  .out("#000000")
 	  .out("-transparent")
 	  .out("#F3CEBE")
 	  .out("-operator")
@@ -239,11 +239,12 @@ function greenify(filepath, callback){
 	  .out("-fuzz")
 	  .out("35%")
 	  .out("-fill")
-	  .out("#DFE")
+	  .out("#000000")
 	  .out("-opaque")
 	  .out("#F3CEBE")
-	  .blur(15)
-	  .colorize(80, 0, 30)
+    .out("-flatten")
+	  .blur(35)
+	  // .colorize(80, 0, 30)
 	  .write(filepath+"high.png", callback);
   }
   function g2(filepath, callback){
@@ -252,7 +253,7 @@ function greenify(filepath, callback){
 	  .out("-fuzz")
 	  .out("17%")
 	  .out("-fill")
-	  .out("#AAFFDD")
+	  .out("#000000")
 	  .out("-transparent")
 	  .out("#AA7259")
 	  .out("-operator")
@@ -262,25 +263,34 @@ function greenify(filepath, callback){
 	  .out("-fuzz")
 	  .out("17%")
 	  .out("-fill")
-	  .out("#AAFFDD")
+	  .out("#000000")
 	  .out("-opaque")
 	  .out("#AA7259")
-	  .blur(5)
-	  .colorize(80, 0, 30)
+    .out("-flatten")
+	  .blur(15)
+	  // .colorize(80, 0, 30)
 	  .write(filepath+"shadow.png", callback);
   }
   function overlay1(filepath, callback){
 	gm(filepath)
-    .composite(filepath+"high.png")
-	  .compose("Multiply")
+    .mask(filepath+"shadow.png")
+    // .colorize(80, 0, 30)
+    .modulate(90, 100, 115)
+    .out("+mask")
+    // .composite(filepath+"shadow.png")
+	  // .compose("Multiply")
   	.write(filepath, callback);
   }
   function overlay2(filepath, callback){
   	gm(filepath)
-    	// .composite(filepath+"high.png")
-  	// .compose("Lighten")
-    .composite(filepath+"shadow.png")
-  	.compose("Multiply")
+    .mask(filepath+"high.png")
+    // .colorize(80, 0, 30)
+    .modulate(90, 100, 115)
+    .out("+mask")
+   //  	// .composite(filepath+"high.png")
+  	// // .compose("Lighten")
+   //  .composite(filepath+"high.png")
+  	// .compose("Multiply")
     .write(filepath, callback);
   }
 }
