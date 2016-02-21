@@ -115,7 +115,7 @@ var hulkify = function(html, callback){
 
 	var outHtml = html;
       outHtml = outHtml.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
-      outHtml = outHtml.replace(/<iframe \b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, '');
+      outHtml = outHtml.replace(/<iframe \b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, '<div class="filler-hulk"></div>');
 
   var addlheaders = '<link rel="stylesheet" type="text/css" href="/css/hulk.css">\n';
       addlheaders += '<link rel="stylesheet" href="/css/jquery-ui.min.css">';
