@@ -30,3 +30,5 @@ Thumbs.db
 
 *.jpg
 config/secrets.js
+
+public/images/
