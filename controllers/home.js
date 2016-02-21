@@ -136,7 +136,7 @@ var hulkify = function(html, callback){
   		  var url = images[i][0];
 		  download(url, filename, function(data){
 			console.log("URL:" + data.url );
-			outHtml = outHtml.replace(data.url, "/images/"+data.filename )
+			outHtml = outHtml.replace(data.url, "/images/hulks/"+data.filename )
 		  });
 		}
 	}
