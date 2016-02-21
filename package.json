@@ -59,11 +59,13 @@
     "request": "^2.69.0",
     "serve-favicon": "^2.3.0",
     "stripe": "^4.4.0",
+    "superagent": "^1.7.2",
     "tumblr.js": "^0.0.7",
     "twilio": "^3.3.0-edge",
     "twit": "^2.2.2",
     "validator": "^4.8.0",
     "when": "^3.7.7",
+    "xmlbuilder": "^4.2.1",
     "yui": "^3.18.1"
   },
   "devDependencies": {
