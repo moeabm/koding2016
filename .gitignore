@@ -31,4 +31,5 @@ Thumbs.db
 *.jpg
 config/secrets.js
 
-public/images/
+public/images/hulks/
+ocOut

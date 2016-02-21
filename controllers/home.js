@@ -11,7 +11,7 @@ var opencalais = require('../lib/opencalais')(secrets.opencalaisKey);
 var when = require('when');
 var fs = require('fs');
 var gm = require('gm');
-var imagesfolder = __dirname+"/../public/images/";
+var imagesfolder = __dirname+"/../public/images/hulks/";
 
 exports.index = function(req, res) {
   res.render('home', {
