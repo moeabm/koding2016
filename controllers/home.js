@@ -194,7 +194,7 @@ var hulkify = function(html, callback){
 
 //credit: http://stackoverflow.com/questions/12740659/downloading-images-with-node-js
 var download = function(uri, filename, callback){
-  if (!fs.existsSync(imagesfolder + filename) ){
+  if (true || !fs.existsSync(imagesfolder + filename) ){
 	console.log(uri);
 	request.head(uri, function(err, res, body){
 	  console.log('content-type:', res.headers['content-type']);
@@ -271,17 +271,16 @@ function greenify(filepath, callback){
   }
   function overlay1(filepath, callback){
 	gm(filepath)
-	.compose("Multiply")
-  	.composite(filepath+"high.png")
-  	// .composite(filepath+"shadow.png")
+    .composite(filepath+"high.png")
+	  .compose("Multiply")
   	.write(filepath, callback);
   }
   function overlay2(filepath, callback){
-	gm(filepath)
-  	// .composite(filepath+"high.png")
-	// .compose("Lighten")
-	.compose("Multiply")
-  	.composite(filepath+"shadow.png")
-  	.write(filepath, callback);
+  	gm(filepath)
+    	// .composite(filepath+"high.png")
+  	// .compose("Lighten")
+    .composite(filepath+"shadow.png")
+  	.compose("Multiply")
+    .write(filepath, callback);
   }
 }
