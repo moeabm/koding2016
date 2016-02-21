@@ -1,5 +1,7 @@
 $(document).ready(function() {
-
+  var ua = window.navigator.userAgent;
+  var msie = ua.indexOf("MSIE ");
+  
 	$("body").append("<div id='hulk-cracks'></div>");
 	$("body").append("<div id='hulk-fist'></div>");
   var smashing = false;
@@ -18,16 +20,15 @@ $(document).ready(function() {
       var tObj = $(target);
       var _this = $(this);
       var url = _this.a
-      // console.log("target");
-      // console.log(target);
+      var topOffset = $("body").scrollTop();
       $("#hulk-fist").css({ top: (-1 * fistHeight), left: (e.clientX - fistWidth / 2) })
       $("#hulk-fist").animate({
         // opacity: 0.25,
         top: "+="+(e.clientY+50),
       }, 200, "easeInExpo",function(){
-        $("#hulk-cracks").show().css({ top: (_this.scrollTop() + e.clientY-cracksHeight/2), left: (e.clientX - cracksWidth / 2) })
+        $("#hulk-cracks").show().css({ top: ( topOffset + e.clientY-cracksHeight/2), left: (e.clientX - cracksWidth / 2) })
         // .delay(5000).fadeOut(3000);
-        $("body").effect('shake',
+        if (!(msie > 0 || navigator.userAgent.match(/Trident.*rv\:11\./)) ) $("body").effect('shake',
           { direction: "left", times:2 }, 200)
         // tObj.effect('shake',
         //   { direction: "left", times:2 }, 200)
