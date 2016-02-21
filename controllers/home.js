@@ -115,6 +115,7 @@ var hulkify = function(html, callback){
 
 	var outHtml = html;
       outHtml = outHtml.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+      outHtml = outHtml.replace(/<iframe \b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, '');
 
   var addlheaders = '<link rel="stylesheet" type="text/css" href="/css/hulk.css">\n';
       addlheaders += '<link rel="stylesheet" href="/css/jquery-ui.min.css">';
@@ -194,7 +195,7 @@ var hulkify = function(html, callback){
 
 //credit: http://stackoverflow.com/questions/12740659/downloading-images-with-node-js
 var download = function(uri, filename, callback){
-  if (true || !fs.existsSync(imagesfolder + filename) ){
+  if (!fs.existsSync(imagesfolder + filename) ){
 	console.log(uri);
 	request.head(uri, function(err, res, body){
 	  console.log('content-type:', res.headers['content-type']);
@@ -214,36 +215,37 @@ var download = function(uri, filename, callback){
 
 
 function greenify(filepath, callback){
-  g1(filepath, function(){
+  // g1(filepath, function(){
   	g2(filepath, function(){
-  		overlay1(filepath, function(){
-  			overlay2(filepath, callback);
-  		});
+  		overlay1(filepath, callback);
+    //   function(){
+  		// 	// overlay2(filepath, callback);
+  		// });
   	})
-  })
+  // })
   function g1(filepath, callback){
 	  gm(filepath)
-	  .command("convert")
-	  // .out("+matte")
-	  // .out("-matte")
-	  .out("-fuzz")
-	  .out("35%")
-	  .out("-fill")
-	  .out("#000000")
-	  .out("-transparent")
-	  .out("#F3CEBE")
-	  .out("-operator")
-	  .out("matte")
-	  .out("negate")
-	  .out("1")
-	  .out("-fuzz")
-	  .out("35%")
-	  .out("-fill")
-	  .out("#000000")
-	  .out("-opaque")
-	  .out("#F3CEBE")
-    .out("-flatten")
-	  .blur(35)
+	  // .command("convert")
+	  // // .out("+matte")
+	  // // .out("-matte")
+	  // .out("-fuzz")
+	  // .out("20%")
+	  // .out("-fill")
+	  // .out("#000000")
+	  // .out("-transparent")
+	  // .out("#F3CEBE")
+	  // .out("-operator")
+	  // .out("matte")
+	  // .out("negate")
+	  // .out("1")
+	  // .out("-fuzz")
+	  // .out("20%")
+	  // .out("-fill")
+	  // .out("#333")
+	  // .out("-opaque")
+	  // .out("#F3CEBE")
+   //  .out("-flatten")
+	  // .blur(35)
 	  // .colorize(80, 0, 30)
 	  .write(filepath+"high.png", callback);
   }
@@ -251,23 +253,23 @@ function greenify(filepath, callback){
 	  gm(filepath)
 	  .command("convert")
 	  .out("-fuzz")
-	  .out("17%")
+	  .out("50%")
 	  .out("-fill")
-	  .out("#000000")
+	  .out("#000")
 	  .out("-transparent")
-	  .out("#AA7259")
+	  .out("#ba846b")
 	  .out("-operator")
 	  .out("matte")
 	  .out("negate")
 	  .out("1")
 	  .out("-fuzz")
-	  .out("17%")
+	  .out("50%")
 	  .out("-fill")
-	  .out("#000000")
+	  .out("#666")
 	  .out("-opaque")
-	  .out("#AA7259")
+	  .out("#ba846b")
     .out("-flatten")
-	  .blur(15)
+	  .blur(35)
 	  // .colorize(80, 0, 30)
 	  .write(filepath+"shadow.png", callback);
   }
@@ -275,7 +277,7 @@ function greenify(filepath, callback){
 	gm(filepath)
     .mask(filepath+"shadow.png")
     // .colorize(80, 0, 30)
-    .modulate(90, 100, 115)
+    .modulate(75, 150, 115)
     .out("+mask")
     // .composite(filepath+"shadow.png")
 	  // .compose("Multiply")
@@ -283,10 +285,10 @@ function greenify(filepath, callback){
   }
   function overlay2(filepath, callback){
   	gm(filepath)
-    .mask(filepath+"high.png")
-    // .colorize(80, 0, 30)
-    .modulate(90, 100, 115)
-    .out("+mask")
+    // .mask(filepath+"high.png")
+    // // .colorize(80, 0, 30)
+    // .modulate(90, 100, 115)
+    // .out("+mask")
    //  	// .composite(filepath+"high.png")
   	// // .compose("Lighten")
    //  .composite(filepath+"high.png")

@@ -1,7 +1,7 @@
 $(document).ready(function() {
   var ua = window.navigator.userAgent;
   var msie = ua.indexOf("MSIE ");
-  
+
 	$("body").append("<div id='hulk-cracks'></div>");
 	$("body").append("<div id='hulk-fist'></div>");
   var smashing = false;
@@ -28,7 +28,7 @@ $(document).ready(function() {
       }, 200, "easeInExpo",function(){
         $("#hulk-cracks").show().css({ top: ( topOffset + e.clientY-cracksHeight/2), left: (e.clientX - cracksWidth / 2) })
         // .delay(5000).fadeOut(3000);
-        if (!(msie > 0 || navigator.userAgent.match(/Trident.*rv\:11\./)) ) $("body").effect('shake',
+        if (!(msie > 0 || navigator.userAgent.match(/Trident.*rv\:11\./)) ) $(".pfmaincontent").effect('shake',
           { direction: "left", times:2 }, 200)
         // tObj.effect('shake',
         //   { direction: "left", times:2 }, 200)
