@@ -114,6 +114,19 @@ exports.all = function (req, res){
 var hulkify = function(html, callback){
 
 	var outHtml = html;
+      outHtml = outHtml.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+
+  var addlheaders = '<link rel="stylesheet" type="text/css" href="/css/hulk.css">\n';
+      addlheaders += '<link rel="stylesheet" href="/css/jquery-ui.min.css">';
+      addlheaders += '<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>\n';
+      addlheaders += '<script src="/js/jquery-ui.min.js"></script>';
+      addlheaders += '<script src="http://static.politifact.com/js/lib/modernizr.js"></script>\n';
+      addlheaders += '<script src="http://static.politifact.com/js/navscript.js"></script>\n';
+      addlheaders += '<script type="text/javascript" src="/js/hulk.js" ></script>\n';
+  outHtml = outHtml.replace(/<\/head>/, addlheaders + '</head>');
+  var addlBody = '<script src="http://static.politifact.com/js/lib/jquery.bxslider.min.js"></script>\n';
+      addlBody += '<script src="http://static.politifact.com/js/pfact.js"></script>\n';
+  outHtml = outHtml.replace(/<\/body>/i, addlBody + '</body>');
 
 	var images = [];
 
@@ -158,10 +171,11 @@ var hulkify = function(html, callback){
 		});
 	  	// console.log(JSON.stringify(people, null, 4));
 
-  	  	var reg = new RegExp("(<.*?>[^<]*?)politifact([^<]*?<.*?>)", "gim");
+  	  var reg = new RegExp("(<.*?>[^<]*?)politifact([^<]*?<.*?>)", "gim");
 	  	outHtml = outHtml.replace(reg, "$1PolitiSMASH!!$2");
-	  	outHtml = outHtml.replace(/<\/head>/, '<link rel="stylesheet" type="text/css" href="/css/hulk.css"></head>');
-	  	callback(outHtml);
+
+	  	
+      callback(outHtml);
 	  	fs.writeFile("./ocOut", JSON.stringify(res, null, 4), function(err) { console.log(err)} );
 	});
 	return;
@@ -195,6 +209,8 @@ var download = function(uri, filename, callback){
 
 	  	  callback({url: uri, filename: filename});
 };
+
+//SMASH ANIMATION
 
 
 function greenify(filepath, callback){
