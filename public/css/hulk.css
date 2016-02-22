@@ -47,3 +47,31 @@
     font-size: 28pt;
     text-decoration: none;
   }
+
+div.meter img{
+  border-radius: 5px;
+  border: 5px solid gray;
+}
+
+div.meter img[alt="True"]{
+  border-color: green;
+}
+div.meter img[alt="Mostly True"]{
+  border-color: #9EC974;
+}
+div.meter img[alt="Mostly False"]{
+  border-color: #D68157;
+}
+div.meter img[alt="False"]{
+  border-color: #CB2121;
+}
+div.meter img[alt="Pants on Fire!"]{
+  border-color: #550000;
+    animation: border-pulsate 2s infinite;
+}
+
+@keyframes border-pulsate {
+    0%   { border-color:  #CB2121; }
+    50% { border-color: #550000; }
+    100%   { border-color:  #CB2121; }
+}
