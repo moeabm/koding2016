@@ -8,6 +8,15 @@ Politics make you angry? They make ![Hulk](http://169.44.56.236:3000/images/hulk
 
 ## Server Running? ![Offline](http://169.44.56.236:3000/images/online_icon.gif "Check")
 
+## APIs Frameworks and Libraries
+ - NodeJS
+ - GraphicsMagic - for image processing
+ - OpenCalais - for named entity recognition
+ - zlib - gzip decompression
+ - Boilerplate - https://github.com/sahat/hackathon-starter
+ - pm2 - node server managemnt
+
+
 ## image credit
  - http://orig13.deviantart.net/d2d6/f/2014/232/c/5/hey_i_m_a_hulk_fan__by_atariboy2600-d7w0rq1.png
  - http://icons.iconarchive.com/icons/mattahan/ultrabuuf/256/Comics-Hulk-Fist-icon.png
