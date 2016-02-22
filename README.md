@@ -1,6 +1,7 @@
 
-
-![Logo](http://169.44.56.236:3000/images/pf-national-logo.png "Logo")
+<p align="center">
+  <img src="http://169.44.56.236:3000/images/pf-national-logo.png" alt="Logo"/>
+</p>
 [PolitiSMASH!](http://169.44.56.236:3000/)
 ---
 
