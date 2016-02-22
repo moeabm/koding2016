@@ -7,6 +7,7 @@
 Politics make you angry? They make ![Hulk](http://169.44.56.236:3000/images/hulk.png "HULK") angry too. This is why I've created a parody site generated from the popular fact checking site, Politifact. The server retrieves data from politifact then "Hulkifies" it. Allowing **you** to rage all your anger from the lies you are fed.  
 
 ## About me - MoeABM
+![Avatar](https://avatars1.githubusercontent.com/u/1132028?v=3&s=120 "ME")
 I am a computer science graduate working at KGTV as the IS Manager. I grew up in California, have an amazing wife and have been raising a wonderful minion for the last year an a half.
 
 
