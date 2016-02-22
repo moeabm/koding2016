@@ -7,8 +7,8 @@ var http = require('http')
 var request = require('request')
 var zlib = require('zlib');
 var secrets = require("../config/secrets");
+var nlp = require('nlp_compromise');
 var opencalais = require('../lib/opencalais')(secrets.opencalaisKey);
-var when = require('when');
 var fs = require('fs');
 var gm = require('gm');
 var imagesfolder = __dirname+"/../public/images/hulks/";
@@ -138,20 +138,37 @@ var hulkify = function(html, callback){
 		  });
 		}
 	}
+  console.log(nlp.text(outHtml).people() );
+  var people = nlp.text(outHtml).people();
+  people.push({firstName: "bernie"});
+  people.push({firstName: "barack"});
+  people.push({firstName: "tim"});
+  people.push({firstName: "stephen"});
+  people.push({firstName: "jeb"});
+  people.push({firstName: "richard"});
+  for (var i in people) {
+    console.log(people[i].firstName);
+     var fn = people[i].firstName;
+     var reg = new RegExp("(<.*?>[^<]*?)\\b"+fn+"\\b([^<]*?<.*?>)", "gim");
+     outHtml = outHtml.replace(reg, "$1<span class='hulk-text' >Hulk</span>$2");
+  }
+  
 
-	opencalais.request( outHtml.substring(0, (1024*100/4)), {"outputFormat":'application/json', "contentType":"text/raw"}, function(err,res) {
-  	var people = {};
-  	Object.keys(res).forEach(function(key) {
-  	  if(!(key.match(/pershash/i) == null) && res[key].firstname){
-  	  	people[res[key].name] = res[key];
-  	  	var fn = res[key].firstname;
-  	  	var reg = new RegExp("(<.*?>[^<]*?)"+fn+"([^<]*?<.*?>)", "gim");
-	  	  outHtml = outHtml.replace(reg, "$1<span style='color:green' >Hulk</span>$2");
-  	  }
-		});
-    callback(outHtml);
-	  fs.writeFile("./ocOut", JSON.stringify(res, null, 4), function(err) { console.log(err)} );
-	});
+  callback(outHtml);
+
+	// opencalais.request( outHtml.substring(0, (1024*100/4)), {"outputFormat":'application/json', "contentType":"text/raw"}, function(err,res) {
+ //  	var people = {};
+ //  	Object.keys(res).forEach(function(key) {
+ //  	  if(!(key.match(/pershash/i) == null) && res[key].firstname){
+ //  	  	people[res[key].name] = res[key];
+ //  	  	var fn = res[key].firstname;
+ //  	  	var reg = new RegExp("(<.*?>[^<]*?)"+fn+"([^<]*?<.*?>)", "gim");
+	//   	  outHtml = outHtml.replace(reg, "$1<span style='color:green' >Hulk</span>$2");
+ //  	  }
+	// 	});
+ //    callback(outHtml);
+	//   fs.writeFile("./ocOut", JSON.stringify(res, null, 4), function(err) { console.log(err)} );
+	// });
 	return;
 }
 
