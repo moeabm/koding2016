@@ -8,6 +8,7 @@ Politics make you angry? They make ![Hulk](http://169.44.56.236:3000/images/hulk
 
 ## About me - MoeABM
 ![Avatar](https://avatars1.githubusercontent.com/u/1132028?v=3&s=120 "ME")
+
 I am a computer science graduate working at KGTV as the IS Manager. I grew up in California, have an amazing wife and have been raising a wonderful minion for the last year an a half.
 
 
