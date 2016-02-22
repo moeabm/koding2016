@@ -20,7 +20,7 @@ exports.index = function(req, res) {
 };
 
 exports.all = function (req, res){
-  
+
 	var site = "www.politifact.com"
 	var options = {
 		protocol: "http:",
@@ -79,8 +79,12 @@ exports.all = function (req, res){
 var hulkify = function(html, callback){
 
 	var outHtml = html;
+      outHtml = outHtml.replace("&copy; 2016 &bull; All Rights Reserved &bull; Tampa Bay Times", '');
+      outHtml = outHtml.replace("490 First Avenue South &bull; St. Petersburg, FL 33701 &bull; 727-893-8111", '');
       outHtml = outHtml.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+
       outHtml = outHtml.replace(/<iframe \b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, '<div class="filler-hulk"></div>');
+
 
   var addlheaders = '<link rel="stylesheet" type="text/css" href="/css/hulk.css">\n';
       addlheaders += '<link rel="stylesheet" href="/css/jquery-ui.min.css">';

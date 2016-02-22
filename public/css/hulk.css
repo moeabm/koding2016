@@ -39,3 +39,11 @@
 .nav {
     background: #1C711C;
   }
+
+  .icons span{ 
+    font-size: 32pt;
+  }
+  .icons a{ 
+    font-size: 28pt;
+    text-decoration: none;
+  }
