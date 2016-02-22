@@ -8,10 +8,12 @@ var request = require('request')
 var zlib = require('zlib');
 var secrets = require("../config/secrets");
 var nlp = require('nlp_compromise');
+var hulkifyText = require('../lib/hulkify');
 var opencalais = require('../lib/opencalais')(secrets.opencalaisKey);
 var fs = require('fs');
 var gm = require('gm');
 var imagesfolder = __dirname+"/../public/images/hulks/";
+var cheerio = require('cheerio');
 
 exports.index = function(req, res) {
   res.render('home', {
@@ -92,6 +94,15 @@ var hulkify = function(html, callback){
       outHtml = outHtml.replace(/http:\/\/static.politifact.com.s3.amazonaws.com:80\/rulings%2Ftom-false.gif/gi, '/images/False.jpg');
       outHtml = outHtml.replace(/http:\/\/static.politifact.com.s3.amazonaws.com:80\/rulings%2Ftom-pantsonfire.gif/gi, '/images/Hulkroars.gif');
 
+      // console.log(hulkifyText(outHtml));
+
+  var $ = cheerio.load(outHtml);
+
+  $("p.statement__text a").each(function(){
+    $(this).text( hulkifyText($(this).text() ) );
+  })
+
+  outHtml = $.html();
 
 
   var addlheaders = '<link rel="stylesheet" type="text/css" href="/css/hulk.css">\n';
@@ -138,7 +149,7 @@ var hulkify = function(html, callback){
 		  });
 		}
 	}
-  console.log(nlp.text(outHtml).people() );
+  // console.log(nlp.text(outHtml).people() );
   var people = nlp.text(outHtml).people();
   people.push({firstName: "bernie"});
   people.push({firstName: "barack"});
@@ -147,7 +158,7 @@ var hulkify = function(html, callback){
   people.push({firstName: "jeb"});
   people.push({firstName: "richard"});
   for (var i in people) {
-    console.log(people[i].firstName);
+    // console.log(people[i].firstName);
      var fn = people[i].firstName;
      var reg = new RegExp("(<.*?>[^<]*?)\\b"+fn+"\\b([^<]*?<.*?>)", "gim");
      outHtml = outHtml.replace(reg, "$1<span class='hulk-text' >Hulk</span>$2");
