@@ -28,7 +28,6 @@ bower_components
 .DS_Store
 Thumbs.db
 
-*.jpg
 config/secrets.js
 
 public/images/hulks/
