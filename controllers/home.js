@@ -85,6 +85,14 @@ var hulkify = function(html, callback){
 
       outHtml = outHtml.replace(/<iframe \b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, '<div class="filler-hulk"></div>');
 
+      outHtml = outHtml.replace(/http:\/\/static.politifact.com.s3.amazonaws.com:80\/politifact%2Frulings%2Frulings-tom-true.gif/gi, '/images/True.png');
+      outHtml = outHtml.replace(/http:\/\/static.politifact.com.s3.amazonaws.com:80\/rulings%2Ftom-mostlytrue.gif/gi, '/images/mostlyTrue.jpg');
+      outHtml = outHtml.replace(/http:\/\/static.politifact.com.s3.amazonaws.com:80\/rulings%2Ftom-halftrue.gif/gi, '/images/mostlyTrue.jpg');
+      outHtml = outHtml.replace(/http:\/\/static.politifact.com.s3.amazonaws.com:80\/rulings%2Ftom-mostlyfalse.gif/gi, '/images/mostlyFalse.gif');
+      outHtml = outHtml.replace(/http:\/\/static.politifact.com.s3.amazonaws.com:80\/rulings%2Ftom-false.gif/gi, '/images/False.jpg');
+      outHtml = outHtml.replace(/http:\/\/static.politifact.com.s3.amazonaws.com:80\/rulings%2Ftom-pantsonfire.gif/gi, '/images/Hulkroars.gif');
+
+
 
   var addlheaders = '<link rel="stylesheet" type="text/css" href="/css/hulk.css">\n';
       addlheaders += '<link rel="stylesheet" href="/css/jquery-ui.min.css">';
@@ -120,7 +128,7 @@ var hulkify = function(html, callback){
 		  filename = filename.replace(/%[A-Z0-9]{2}/gi, "");
 		  var url = images[i][0];
 		  download(url, filename, function(data){
-			outHtml = outHtml.replace(data.url, "/images/hulks/"+data.filename )
+			outHtml = outHtml.replace(data.url, "/images/hulks/"+data.filename+'_hulked.png' )
 		  });
 		}
 	}
@@ -209,11 +217,11 @@ function greenify(filepath, callback){
 	  .out("-fuzz")
 	  .out("50%")
 	  .out("-fill")
-	  .out("#666")
+	  .out("#000")
 	  .out("-opaque")
 	  .out("#ba846b")
     .out("-flatten")
-	  .blur(35)
+	  .blur(20)
 	  // .colorize(80, 0, 30)
 	  .write(filepath+"shadow.png", callback);
   }
@@ -221,11 +229,11 @@ function greenify(filepath, callback){
 	gm(filepath)
     .mask(filepath+"shadow.png")
     // .colorize(80, 0, 30)
-    .modulate(75, 150, 115)
+    .modulate(50, 180, 130)
     .out("+mask")
     // .composite(filepath+"shadow.png")
 	  // .compose("Multiply")
-  	.write(filepath, callback);
+  	.write(filepath+'_hulked.png', callback);
   }
   function overlay2(filepath, callback){
   	gm(filepath)
