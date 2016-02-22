@@ -109,6 +109,12 @@ var hulkify = function(html, callback){
 
   var reg = new RegExp("(<.*?>[^<]*?)politifact([^<]*?<.*?>)", "gim");
   outHtml = outHtml.replace(reg, "$1PolitiSMASH!!$2");
+
+
+  var reg = new RegExp("\>Truth-O-Meter|truthometer", "gim");
+  outHtml = outHtml.replace(reg, ">Hulk-O-Meter");
+  var reg = new RegExp("Pants on Fire", "gim");
+  outHtml = outHtml.replace(reg, "HULK ANGRY!");
 	var images = [];
 
 	var tmp;

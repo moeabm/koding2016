@@ -65,7 +65,8 @@ div.meter img[alt="Mostly False"]{
 div.meter img[alt="False"]{
   border-color: #CB2121;
 }
-div.meter img[alt="Pants on Fire!"]{
+div.meter img[alt="Pants on Fire!"],
+div.meter img[alt="HULK ANGRY!!"]{
   border-color: #550000;
     animation: border-pulsate 2s infinite;
 }
