@@ -16,7 +16,7 @@ I am a computer science graduate working at KGTV as the IS Manager. I grew up in
 ## APIs Frameworks and Libraries
  - NodeJS
  - GraphicsMagic - for image processing
- ~~- OpenCalais - for named entity recognition~~
+ - ~~OpenCalais - for named entity recognition~~
  - npl_compromise - name replacement
  - hulkify - linguistic text replacement
  - zlib - gzip decompression
