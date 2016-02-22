@@ -1,9 +1,8 @@
-# koding2016
 ![Logo](http://169.44.56.236/images/pf-national-logo.png "Logo")
 [PolitiSMASH!](http://169.44.56.236/)
 ---
 
-Politics make you angry? They make Hulk angry too. This is why I've created a parody site generated from the popular fact checking site, Politifact. The server retrieves data from politifact then "Hulkifies" it. Allowing **you** to rage all your anger from the lies you are fed.  
+Politics make you angry? They make [Hulk](http://www.kam10.com/skins/shared/imagesads/herologos/hulk-5244841c40cf1.png) angry too. This is why I've created a parody site generated from the popular fact checking site, Politifact. The server retrieves data from politifact then "Hulkifies" it. Allowing **you** to rage all your anger from the lies you are fed.  
 
 ## image credit
  - http://orig13.deviantart.net/d2d6/f/2014/232/c/5/hey_i_m_a_hulk_fan__by_atariboy2600-d7w0rq1.png
