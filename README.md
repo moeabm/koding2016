@@ -14,7 +14,7 @@ Politics make you angry? They make ![Hulk](http://169.44.56.236:3000/images/hulk
  - OpenCalais - for named entity recognition
  - zlib - gzip decompression
  - Boilerplate - https://github.com/sahat/hackathon-starter
- - pm2 - node server managemnt
+ - pm2 - node server management
 
 
 ## image credit
